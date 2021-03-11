@@ -8,15 +8,35 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "NoSleep")
 public class NoSleepPlugin extends Plugin {
+    @PluginMethod
+    public void stayAwake(PluginCall call) {
+        getBridge()
+            .executeOnMainThread(
+                new Runnable() {
 
-    private NoSleep implementation = new NoSleep();
+                    @Override
+                    public void run() {
+                        Window window = getActivity().getWindow();
+                        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                        call.resolve();
+                    }
+                }
+            );
+    }
 
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
+    public void sleep(PluginCall call) {
+        getBridge()
+            .executeOnMainThread(
+                new Runnable() {
 
-        JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
-        call.resolve(ret);
+                    @Override
+                    public void run() {
+                        Window window = getActivity().getWindow();
+                        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                        call.resolve();
+                    }
+                }
+            );
     }
 }

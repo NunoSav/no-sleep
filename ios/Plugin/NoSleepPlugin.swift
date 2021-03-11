@@ -7,12 +7,23 @@ import Capacitor
  */
 @objc(NoSleepPlugin)
 public class NoSleepPlugin: CAPPlugin {
-    private let implementation = NoSleep()
-
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func stayAwake(_ call: CAPPluginCall) {
+      DispatchQueue.main.async {
+          if(!UIApplication.shared.isIdleTimerDisabled) {
+              UIApplication.shared.isIdleTimerDisabled = true
+          }
+        
+          call.resolve()
+      }
     }
+  
+  @objc func sleep(_ call: CAPPluginCall) {
+      DispatchQueue.main.async {
+          if(UIApplication.shared.isIdleTimerDisabled) {
+              UIApplication.shared.isIdleTimerDisabled = false
+          }
+        
+          call.resolve()
+      }
+  }
 }

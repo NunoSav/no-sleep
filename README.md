@@ -13,24 +13,32 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`stayAwake()`](#stayawake)
+* [`sleep()`](#sleep)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### stayAwake()
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+stayAwake() => Promise<void>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+Keep mobile device screen on, preventing idle shutdown.
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+--------------------
+
+
+### sleep()
+
+```typescript
+sleep() => Promise<void>
+```
+
+Allow the mobile device screen to go idle.
 
 --------------------
 
