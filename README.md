@@ -1,6 +1,7 @@
 # @nunosav/no-sleep
 
-Capacitor 3 plugin to keep mobile device awake
+Capacitor 3 plugin to keep mobile device awake.
+Based on https://github.com/capacitor-community/keep-awake but with Capacitor 3 support.
 
 ## Install
 
