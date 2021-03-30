@@ -1,6 +1,6 @@
 {
   "name": "@nunosav/no-sleep",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Capacitor 3 plugin to keep mobile device awake",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
