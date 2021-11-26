@@ -10,12 +10,12 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "NoSleep")
 public class NoSleepPlugin extends Plugin {
+
     @PluginMethod
     public void stayAwake(PluginCall call) {
         getBridge()
             .executeOnMainThread(
                 new Runnable() {
-
                     @Override
                     public void run() {
                         Window window = getActivity().getWindow();
@@ -31,7 +31,6 @@ public class NoSleepPlugin extends Plugin {
         getBridge()
             .executeOnMainThread(
                 new Runnable() {
-
                     @Override
                     public void run() {
                         Window window = getActivity().getWindow();
